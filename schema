@@ -1,0 +1,45 @@
+/*
+Task manager app
+db should have how many tables ?
+i have 2 tables 
+1. user
+2. task content table 
+
+user table 
+->userId
+->name
+->email
+->password
+
+
+task table
+->heading
+->content
+->userId(reference to user table) 
+
+model User{
+    id          Int @id @default(autoincrement())
+    name        String
+    email       String @unique
+    password    String
+    tasks       Task[]
+}
+
+model Task {
+    heading     String
+    content     String
+    userId      Int
+    user        User @relation(fields: [userId],references: [id])
+
+    userId
+    user    User @relation(fiels: [userId], reference:[id])
+
+}
+
+
+API end points
+user : post(signup), post(login)
+task : POST, PUT , GET , DELETE
+
+
+*/
