@@ -162,7 +162,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "postinstall": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "start": "prisma migrate deploy && node index.js"
+
   },
   "keywords": [],
   "author": "",

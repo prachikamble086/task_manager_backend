@@ -44,9 +44,15 @@ const getTask = async (req, res) => {
   try {
     const { id } = req.params;
 
+    const page = parseInt(req.query.page);
+    const pagesize = parseInt(req.query.size);
+    const skip = (page - 1) * pagesize;
+
     const task = await prisma.task.findMany({
       where: {
         id: parseInt(id),
+        skip: skip,
+        take: pagesize,
       },
     });
 
